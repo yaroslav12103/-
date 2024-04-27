@@ -1,0 +1,51 @@
+import random, time
+
+print("Добро пожаловать в программу 'Менеджер паролей'")
+
+print('''
+      ''')
+
+passwords = {}
+
+def table():
+    for i in range(0, len(passwords)):
+        print(passwords.keys()[i], '-', passwords.values()[i])
+    print("***********************************************")
+def add():
+    add_key = input("Введите название логина: ")
+    add_value = input("Введите пароль: ")
+    passwords[add_key]=add_value
+    print("Ваш аккаунт добавился")
+    print("***********************************************")
+def delete():
+    del_film = input("Какой логин желаете удалить: ")
+    del passwords[del_film]
+    print("Ваш аккаунт удалился")
+    print("***********************************************")
+def random_pass():
+    symbol = "+-/*!&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;$#?=@abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890" # str = list
+    login = input("Введите логин: ")
+    pass_len = int(input("Длина пароля: "))
+    password = ""
+    for i in range(pass_len):
+        password += random.choice(symbol)
+
+    passwords[login] = password
+    print("Ваш пароль:", password)
+    print("***********************************************")
+
+while True:
+    print("Команда 1 - Список паролей Команда 2 - Удалить пароль Команда 3 - Добавить пароль Команда 4 - Генерация пароля")
+    print("(Если вы не добавили ни одного пароля не используйте команду удаления)")
+    command = int(input("Выберите команду: "))
+        #Условия
+    if command == 1:
+        table()
+    elif command == 2:
+        delete()
+    elif command == 3:
+        add()
+    elif command == 4:
+        random_pass()
+    else:
+        print("Такой команды нет!")
